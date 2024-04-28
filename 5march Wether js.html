@@ -1,0 +1,109 @@
+<html>
+    <head>
+
+      <style>
+
+        body{
+
+          background-image: url(https://wallpaperaccess.com/full/3481767.jpg);
+        }
+
+        
+      </style>
+
+    </head>
+    <body>
+
+      <h1 style="color:aliceblue; text-align: center;">Check weather details</h1>
+
+      <form style="text-align: center">
+
+        <input type="text" placeholder="Enter City Name">
+        <input type="submit">
+
+        </form>
+        <script>
+
+
+       var aa=document.createElement("h2");
+       document.body.appendChild(aa);
+
+       var a=document.forms
+       console.log(a[0])
+
+          
+       a[0].addEventListener("submit",function(e){
+
+        e.preventDefault()
+
+        var b=e.target[0].value
+
+        var c="https://api.openweathermap.org/data/2.5/weather?q="
+         var d="&appid=3182a06246cadf7efbfe8f2f306dad95"
+
+         var f=c+b+d
+    
+
+
+       
+       
+       fetch( f, {
+       method:"get"
+
+      }).then((val)=>{
+      return val.json()
+
+
+       }).then((val)=>{
+
+
+    // document.write((val.main.temp)-273.15)
+
+    var temp=parseInt((val.main.temp)-273.15)
+  
+   
+    console.log(temp)
+    if(temp<25){
+
+      // var aa=document.createElement("div");
+      // document.body.appendChild(aa);
+   
+      aa.style.width="700px";
+      aa.style.height="700px";
+
+
+      aa.style.backgroundImage="url(http://clipart-library.com/img/705008.gif)";
+      aa.style.backgroundRepeat="no-repeat"
+      aa.style.alignItems="center"
+     
+      
+    }
+    else if(temp>30){
+
+     
+      aa.style.width="500px";
+      aa.style.height="500px";
+      aa.style.backgroundImage="url(https://media1.tenor.com/images/4fec8da67788441fe40b0b77c1c47a8e/tenor.gif?itemid=14419183)";
+      aa.style.backgroundRepeat="no-repeat"
+      
+     
+
+
+
+    }
+
+    aa.innerHTML=temp+"<sup>o</sup>C"
+    aa.style.fontSize="30px"
+    aa.style.marginLeft="680px"
+    
+
+    
+       })
+
+     
+
+      })
+
+        </script>
+    </body>
+</html>
